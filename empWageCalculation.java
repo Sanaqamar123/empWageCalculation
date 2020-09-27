@@ -16,5 +16,9 @@ public class empWageCalculation {
 	int FullDayHour=8;
 	int WagePerDay=WagePerHour*FullDayHour;
 	System.out.println("Wage Per day : "+WagePerDay);
+
+	int PartTimeHour=8;
+	int WagePartTimePerDay=WagePerHour*PartTimeHour;
+	System.out.println("Part time wage per day : "+WagePartTimePerDay);
 	}
 }
