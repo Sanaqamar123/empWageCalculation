@@ -38,5 +38,10 @@ public class empWageCalculation {
 		System.out.println("Employee absent");
 		break;
 	}
+
+	int WorkingDayPerMonth=20;
+	int TotalWagePerMonth=WorkingDayPerMonth*WagePerDay;
+	System.out.println("Total wage per month : "+TotalWagePerMonth);
+
 	}
 }
