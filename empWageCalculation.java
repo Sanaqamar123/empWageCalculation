@@ -43,5 +43,13 @@ public class empWageCalculation {
 	int TotalWagePerMonth=WorkingDayPerMonth*WagePerDay;
 	System.out.println("Total wage per month : "+TotalWagePerMonth);
 
+	int day=1;
+	while(day <= WorkingDayPerMonth)
+	{
+		int Wage=WagePerDay*day;
+		System.out.println("Wage for "+day+" : "+Wage);
+		day=day+1;
+	}
+
 	}
 }
