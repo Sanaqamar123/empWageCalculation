@@ -11,5 +11,10 @@ public class empWageCalculation {
 		}
 		else
 			System.out.println("Employee is absent");
+
+	int WagePerHour=20;
+	int FullDayHour=8;
+	int WagePerDay=WagePerHour*FullDayHour;
+	System.out.println("Wage Per day : "+WagePerDay);
 	}
 }
