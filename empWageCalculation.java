@@ -1,55 +1,35 @@
 public class empWageCalculation {
 
-	public static void main(String[] args) {
+  	public static final int PartTime=8;
+	public static final int FullTime=8;
+	public static final int WagePerHour=20;
+	public static final int WorkingDays=20;
+	public static final int MaxHoursInMonth=100;
+	//refactoring the code of employee wage computaton problem
+	public static int refactorEmpWageProblem() {
+		int WorkHours=0, totalHours=0, days=0;
+		while(totalHours <= MaxHoursInMonth && days < WorkingDays) {
+			days++;
+			int choice = (int)Math.floor(Math.random()*10)%3;
+			switch(choice) {
+			case 1 :
+				WorkHours=8;
+				break;
 
-	System.out.println("Welcome to Employee Wage Calculation");
-
-	double num1 = Math.floor(Math.random()*10)%2;
-
-		if(num1 == 0) {
-			System.out.println("Employee is present");
+			case 2 :
+				WorkHours=8;
+				break;
+			default :
+				WorkHours=0;
+			}
+			totalHours+=WorkHours;
+			System.out.println("Day : "+days+"Hours :"+totalHours);
 		}
-		else
-			System.out.println("Employee is absent");
-
-	int WagePerHour=20;
-	int FullDayHour=8;
-	int WagePerDay=WagePerHour*FullDayHour;
-	System.out.println("Wage Per day : "+WagePerDay);
-
-	int PartTimeHour=8;
-	int WagePartTimePerDay=WagePerHour*PartTimeHour;
-	System.out.println("Part time wage per day : "+WagePartTimePerDay);
-
-	int WorkHour=0;
-	int choice = (int)(Math.floor(Math.random()*10)%3);
-	switch(choice) {
-	case 1:
-		System.out.println("Employee is full time");
-		WorkHour=8;
-		break;
-
-	case 2:
-		System.out.println("Employee is part time");
-		WorkHour=8;
-		break;
-
-	default :
-		System.out.println("Employee absent");
-		break;
+		int totalWage=totalHours*WagePerHour;
+		System.out.println("Total employee Wage : "+totalWage);
+		return totalWage;
 	}
-
-	int WorkingDayPerMonth=20;
-	int TotalWagePerMonth=WorkingDayPerMonth*WagePerDay;
-	System.out.println("Total wage per month : "+TotalWagePerMonth);
-
-	int day=1;
-	while(day <= WorkingDayPerMonth)
-	{
-		int Wage=WagePerDay*day;
-		System.out.println("Wage for "+day+" : "+Wage);
-		day=day+1;
-	}
-
+	public static void main(String[] args) {
+		refactorEmpWageProblem();
 	}
 }
