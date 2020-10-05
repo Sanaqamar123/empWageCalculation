@@ -1,10 +1,6 @@
 import java.util.*;
 
-interface empWageProgram {
-                void computeEmpWage();
-}
-
-public class empWageCalculation implements empWageProgram {
+public class empWageCalculation {
 
         public static final int PartTime=1;
         public static final int FullTime=2;
@@ -15,13 +11,16 @@ public class empWageCalculation implements empWageProgram {
         private final int maxHoursInMonth;
         private int totalWage;
 
-
-       public empWageCalculation(String company_name,int wagePerHour,int workingDays,int maxHoursInMonth)
+        empWageCalculation(String company_name,int wagePerHour,int workingDays,int maxHoursInMonth)
         {
-                this.company_name=company_name;
-                this.wagePerHour=wagePerHour;
-                this.workingDays=workingDays;
-                this.maxHoursInMonth=maxHoursInMonth;
+        	this.company_name=company_name;
+        	this.wagePerHour=wagePerHour;
+        	this.workingDays=workingDays;
+        	this.maxHoursInMonth=maxHoursInMonth;
+        }
+        public void setTotalEmpWage(int totalWage)
+        {
+        	this.totalWage=totalWage;
         }
 
         Scanner sc = new Scanner(System.in);
@@ -43,7 +42,7 @@ public class empWageCalculation implements empWageProgram {
                         case 2 :
                                 WorkHours=8;
                                 break;
- default :
+                        default :
                                 WorkHours=0;
                         }
 
@@ -51,13 +50,14 @@ public class empWageCalculation implements empWageProgram {
                 }
 
                 totalWage=totalHours*wagePerHour;
-		HashMap<Integer,String> store=new  HashMap<Integer,String>();
+                HashMap<Integer,String> store=new  HashMap<Integer,String>();
                 store.put(totalWage,company_name);
                 Set set = store.entrySet();
                 Iterator itobj = set.iterator();
                 while(itobj.hasNext()) {
                 	Map.Entry mapobj=(Map.Entry)itobj.next();
                 	System.out.println("Total Wage : "+mapobj.getKey()+" Company Name : "+mapobj.getValue());
+
                 }
                 Set<Integer> keySet = store.keySet();
                 ArrayList<Integer> listOfKeys=new ArrayList<Integer>(keySet);
@@ -67,8 +67,13 @@ public class empWageCalculation implements empWageProgram {
                 System.out.println("Company name :"+listOfValues);
 
         }
+
+        public int getTotalWage() {
+    		return totalWage;
+    }
+
         public String toString() {
-                return "\nTotal employee wage for Company "+company_name+" is "+totalWage;
+        	return "\nTotal employee wage for Company "+company_name+" is "+totalWage;
         }
 
         public static void main(String[] args) {
@@ -78,6 +83,7 @@ public class empWageCalculation implements empWageProgram {
         System.out.print("How Many Company's wages you want to calculate  : ");
         int n = sc.nextInt();
         empWageCalculation Company[] = new empWageCalculation[n];
+
 
         for (int i = 0; i < n; i++) {
 
@@ -95,6 +101,7 @@ public class empWageCalculation implements empWageProgram {
                 Company[i] = new empWageCalculation(company_name,wage_per_day,working_days,max_hours_in_month);
                 Company[i].computeEmpWage();
                 System.out.println(Company[i]);
+                System.out.println("Total wage for "+company_name+" : "+Company[i].getTotalWage());
         }
         sc.close();
         se.close();
