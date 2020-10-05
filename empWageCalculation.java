@@ -1,22 +1,27 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class empWageCalculation {
+interface empWageProgram {
+                void computeEmpWage();
+}
+
+public class empWageCalculation implements empWageProgram {
 
         public static final int PartTime=1;
         public static final int FullTime=2;
 
-        private final String name;
+        private final String company_name;
         private final int wagePerHour;
         private final int workingDays;
         private final int maxHoursInMonth;
         private int totalWage;
 
-        empWageCalculation(String name,int wagePerHour,int workingDays,int maxHoursInMonth)
+
+       public empWageCalculation(String company_name,int wagePerHour,int workingDays,int maxHoursInMonth)
         {
-        	this.name=name;
-        	this.wagePerHour=wagePerHour;
-        	this.workingDays=workingDays;
-        	this.maxHoursInMonth=maxHoursInMonth;
+                this.company_name=company_name;
+                this.wagePerHour=wagePerHour;
+                this.workingDays=workingDays;
+                this.maxHoursInMonth=maxHoursInMonth;
         }
 
         Scanner sc = new Scanner(System.in);
@@ -38,7 +43,7 @@ public class empWageCalculation {
                         case 2 :
                                 WorkHours=8;
                                 break;
-                        default :
+			default :
                                 WorkHours=0;
                         }
 
@@ -49,7 +54,7 @@ public class empWageCalculation {
 
         }
         public String toString() {
-        	return "\nTotal employee wage for Company "+name+" is "+totalWage;
+                return "\nTotal employee wage for Company "+company_name+" is "+totalWage;
         }
 
         public static void main(String[] args) {
