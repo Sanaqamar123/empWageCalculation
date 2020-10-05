@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 interface empWageProgram {
                 void computeEmpWage();
@@ -43,7 +43,7 @@ public class empWageCalculation implements empWageProgram {
                         case 2 :
                                 WorkHours=8;
                                 break;
-			default :
+ default :
                                 WorkHours=0;
                         }
 
@@ -51,6 +51,20 @@ public class empWageCalculation implements empWageProgram {
                 }
 
                 totalWage=totalHours*wagePerHour;
+		HashMap<Integer,String> store=new  HashMap<Integer,String>();
+                store.put(totalWage,company_name);
+                Set set = store.entrySet();
+                Iterator itobj = set.iterator();
+                while(itobj.hasNext()) {
+                	Map.Entry mapobj=(Map.Entry)itobj.next();
+                	System.out.println("Total Wage : "+mapobj.getKey()+" Company Name : "+mapobj.getValue());
+                }
+                Set<Integer> keySet = store.keySet();
+                ArrayList<Integer> listOfKeys=new ArrayList<Integer>(keySet);
+                Collection<String> values=store.values();
+                ArrayList<String> listOfValues=new ArrayList(values);
+                System.out.println("Total wages : "+listOfKeys);
+                System.out.println("Company name :"+listOfValues);
 
         }
         public String toString() {
@@ -77,8 +91,8 @@ public class empWageCalculation implements empWageProgram {
                 int max_hours_in_month = sc.nextInt();
 
                 System.out.println("\nCompany name:");
-                String name=se.nextLine();
-                Company[i] = new empWageCalculation(name,wage_per_day,working_days,max_hours_in_month);
+                String company_name=se.nextLine();
+                Company[i] = new empWageCalculation(company_name,wage_per_day,working_days,max_hours_in_month);
                 Company[i].computeEmpWage();
                 System.out.println(Company[i]);
         }
